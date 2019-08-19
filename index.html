@@ -19,8 +19,8 @@
 <script>
 
     function fetchBtn() {
-        fetch("https://cors-test.appspot.com/test", {credentials: "include", method: "POST"})
-        .then(fetch("https://cors-test.appspot.com/test", {credentials: "include", method: "POST"}))
+        fetch("https://cors-test.appspot.com/test", {credentials: "include", method: "POST", mode: "cors"})
+        .then(fetch("https://cors-test.appspot.com/test", {credentials: "include", method: "POST", mode: "cors"}))
         .then((res) => console.log("Check network tab for cookies in requests", res));
     }
 
