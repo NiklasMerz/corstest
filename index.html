@@ -4,25 +4,35 @@
 
 <body>
 
-    <button id="fetch" onclick="fetchBtn()">fetch</button>
+    <h3>Check network tab of developer tools.</h3>
+    <p>This pages does two subsequent requests to the cors-test API. The first one should recieve a cookie that should be sent on the second one.</p>
+
+    <button id="fetch" onclick="fetchBtn">fetch</button>
 
     <br/><br/>
 
-    <button id="xhr" onclick="xhrBtn()">XMLHttpRequest</button>
+    <button id="xhr" onclick="xhrBtn">XMLHttpRequest</button>
 
 </body>
 
 <script>
 
     function fetchBtn() {
-        // Do two subsequent requests. The first one should recieve a cookie that should be sent on the second one.
         fetch("https://cors-test.appspot.com/test", {credentials: "include"})
         .then(fetch("https://cors-test.appspot.com/test", {credentials: "include"}))
         .then((res) => console.log("Check network tab for cookies in requests", res));
     }
 
     function xhrBtn() {
-        alert("TODO");
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://cors-test.appspot.com/test', true);
+        xhr.withCredentials = true;
+        xhr.send(null);
+
+        xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://cors-test.appspot.com/test', true);
+        xhr.withCredentials = true;
+        xhr.send(null);
     }
 
 </script>
