@@ -20,17 +20,11 @@
 
     function fetchBtn() {
         fetch("https://cors-test.appspot.com/test", {credentials: "include", method: "GET", mode: "cors"})
-        .then(fetch("https://cors-test.appspot.com/test", {credentials: "include", method: "GET", mode: "cors"}))
         .then((res) => console.log("Check network tab for cookies in requests", res));
     }
 
     function xhrBtn() {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'https://cors-test.appspot.com/test', true);
-        xhr.withCredentials = true;
-        xhr.send(null);
-
-        xhr = new XMLHttpRequest();
         xhr.open('GET', 'https://cors-test.appspot.com/test', true);
         xhr.withCredentials = true;
         xhr.send(null);
