@@ -23,13 +23,13 @@
 <script>
 
     function fetchBtn(url) {
-        fetch(url, {credentials: "include", method: "GET", mode: "cors"})
+        fetch(url + ((/\?/).test(url) ? "&" : "?") + (new Date()).getTime(), {credentials: "include", method: "GET", mode: "cors", cache: 'no-cache'})
         .then((res) => console.log("Check network tab for cookies in requests", res));
     }
 
     function xhrBtn(url) {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', url, true);
+        xhr.open('GET', url + ((/\?/).test(url) ? "&" : "?") + (new Date()).getTime(), true);
         xhr.withCredentials = true;
         xhr.send(null);
     }
