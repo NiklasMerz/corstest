@@ -4,28 +4,32 @@
 
 <body>
 
-    <h3>Check network tab of developer tools.</h3>
-    <p>This pages does two subsequent requests to the cors-test API. <br/>
-    The first one should recieve a cookie that should be sent on the second one.</p>
+    <h2>Check network tab of developer tools for cookies in requests.</h2>
+    <p>The buttons do a http request to an API that returns a cookie. 
+        The first one should get the cookie and the second one should sent the cookie</p>
 
-    <button id="fetch" onclick="fetchBtn()">fetch</button>
-
+    <h2>CORS requests to https://cors-test.appspot.com/test with cookie test=test</h2>
+    <button id="fetch" onclick="fetchBtn('https://cors-test.appspot.com/test')">fetch</button>
     <br/><br/>
+    <button id="xhr" onclick="xhrBtn('https://cors-test.appspot.com/test')">XMLHttpRequest</button>
 
-    <button id="xhr" onclick="xhrBtn()">XMLHttpRequest</button>
+    <h2>Same origin request to https://niklas.merz.dev/corstest/ with cookie corstest=corstest</h2>
+    <button id="fetch" onclick="fetchBtn('https://niklas.merz.dev/corstest/')">fetch</button>
+    <br /><br />
+    <button id="xhr" onclick="xhrBtn('https://niklas.merz.dev/corstest/')">XMLHttpRequest</button>
 
 </body>
 
 <script>
 
-    function fetchBtn() {
-        fetch("https://cors-test.appspot.com/test", {credentials: "include", method: "GET", mode: "cors"})
+    function fetchBtn(url) {
+        fetch(url, {credentials: "include", method: "GET", mode: "cors"})
         .then((res) => console.log("Check network tab for cookies in requests", res));
     }
 
-    function xhrBtn() {
+    function xhrBtn(url) {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'https://cors-test.appspot.com/test', true);
+        xhr.open('GET', url, true);
         xhr.withCredentials = true;
         xhr.send(null);
     }
