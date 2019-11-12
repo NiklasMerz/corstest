@@ -23,6 +23,8 @@
 
     <img src="https://testcookieimage.merz.workers.dev" alt="CORS">
 
+    <br>
+    <button onclick="reload()">Reload</button>
 </body>
 
 <script>
@@ -37,6 +39,10 @@
         xhr.open('GET', url + ((/\?/).test(url) ? "&" : "?") + (new Date()).getTime(), true);
         xhr.withCredentials = true;
         xhr.send(null);
+    }
+
+    function reload() {
+        location.reload();
     }
 
 </script>
